@@ -50,4 +50,11 @@ function joinDogFraternity(candidate) {
 
 // ------------------------------------------ Additional information ----------------------------------------------------------------------------------------------------------------
 
-// We're touching on constructors now. Constructors are a a special method of a class for creating and initializing an object instance of that class. We've been using that fo
+// We're touching on constructors now. Constructors are a a special method of a class for creating and initializing an object instance of that class.
+// instanceof operator tests to see if the prototype property of a constructor appears anywhere in the prototype chain of an object. Quite simply, it checks
+// if a property is part of an object. See below for pseudocode.
+
+// console.log(property instanceof Object);
+
+// or simply:
+// property instanceof Object
