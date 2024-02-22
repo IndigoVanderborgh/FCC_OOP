@@ -46,12 +46,15 @@ let prototypeProps = [];
   // Only change code below this line
 
 for (let property in beagle) {
-    if(beagle.hasOwnProperty(property)) {
-        ownProps.push(property);
+    if(beagle.hasOwnProperty(property)) { // if beagle has a property that doesn't share with other objects
+        ownProps.push(property); // push that property to array ownProps
     } else {
-        prototypeProps.push(property);
+        prototypeProps.push(property); // push mutual property to prototypeProps.
     }
 }
+
+console.log(ownProps);
+console.log(prototypeProps);
 
 //   function Dog(name) {
 //     this.name = name;
