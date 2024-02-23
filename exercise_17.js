@@ -1,64 +1,110 @@
-// Iterate Over All Properties
+// Use Inheritance So You Don't Repeat Yourself
 
-// You have now seen two kinds of properties: own properties and prototype properties. Own properties are defined directly on the object instance itself. And prototype properties are defined on the prototype.
+// There's a principle in programming called Don't Repeat Yourself (DRY). The reason repeated code is a problem is because any change requires fixing code in multiple places. 
+// This usually means more work for programmers and more room for errors.
 
-// function Bird(name) {
-//   this.name = name;  //own property
-// }
+// Notice in the example below that the describe method is shared by Bird and Dog:
 
-// Bird.prototype.numLegs = 2; // prototype property
-
-// let duck = new Bird("Donald");
-
-// Here is how you add duck's own properties to the array ownProps and prototype properties to the array prototypeProps:
-
-// let ownProps = [];
-// let prototypeProps = [];
-
-// for (let property in duck) {
-//   if(duck.hasOwnProperty(property)) {
-//     ownProps.push(property);
-//   } else {
-//     prototypeProps.push(property);
+// Bird.prototype = {
+//   constructor: Bird,
+//   describe: function() {
+//     console.log("My name is " + this.name);
 //   }
-// }
+// };
 
-// console.log(ownProps);
-// console.log(prototypeProps);
+// Dog.prototype = {
+//   constructor: Dog,
+//   describe: function() {
+//     console.log("My name is " + this.name);
+//   }
+// };
 
-// console.log(ownProps) would display ["name"] in the console, and console.log(prototypeProps) would display ["numLegs"].
+// The describe method is repeated in two places. The code can be edited to follow the DRY principle by creating a supertype (or parent) called Animal:
+
+// function Animal() { };
+
+// Animal.prototype = {
+//   constructor: Animal, 
+//   describe: function() {
+//     console.log("My name is " + this.name);
+//   }
+// };
+
+// Since Animal includes the describe method, you can remove it from Bird and Dog:
+
+// Bird.prototype = {
+//   constructor: Bird
+// };
+
+// Dog.prototype = {
+//   constructor: Dog
+// };
+
+// The eat method is repeated in both Cat and Bear. Edit the code in the spirit of DRY by moving the eat method to the Animal supertype.
+
 
 // ------------------------------------------ exercise ------------------------------------------------------------------------------------------------------------------------------
 
-// Add all of the own properties of beagle to the array ownProps. Add all of the prototype properties of Dog to the array prototypeProps.
+// The eat method is repeated in both Cat and Bear. Edit the code in the spirit of DRY by moving the eat method to the Animal supertype.
 
-function Dog(name) {
-    this.name = name;
+function Cat(name) {
+  this.name = name;
 }
 
-Dog.prototype.numLegs = 4;
+Cat.prototype = {
+  constructor: Cat,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
 
-let beagle = new Dog("Snoopy");
+function Bear(name) {
+  this.name = name;
+}
 
-let ownProps = [];
-let prototypeProps = [];
+Bear.prototype = {
+  constructor: Bear,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
 
-  // Only change code below this line
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+
+};
 
 
+// function Cat(name) {
+//   this.name = name;
+// }
 
-//   function Dog(name) {
-//     this.name = name;
+// Cat.prototype = {
+//   constructor: Cat,
+//   eat: function() {
+//     console.log("nom nom nom");
 //   }
+// };
 
-//   Dog.prototype.numLegs = 4;
+// function Bear(name) {
+//   this.name = name;
+// }
 
-//   let beagle = new Dog("Snoopy");
+// Bear.prototype = {
+//   constructor: Bear,
+//   eat: function() {
+//     console.log("nom nom nom");
+//   }
+// };
 
-//   let ownProps = [];
-//   let prototypeProps = [];
+// function Animal() { }
 
-//   // Only change code below this line
+// Animal.prototype = {
+//   constructor: Animal,
+
+// };
 
 // ------------------------------------------ Additional information ----------------------------------------------------------------------------------------------------------------
 
