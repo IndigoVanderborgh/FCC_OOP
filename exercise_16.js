@@ -51,3 +51,4 @@ Object.prototype.isPrototypeOf(Dog.prototype); // REVIEW ME!
 // Refer to line 33:
 // Object.prototype.isPrototypeOf(Dog.prototype); 
 // This line checks if the Object prototype is in the prototype chain of the Dog.prototype. 
+// Prototype chaining has relevance to inheritence. 
